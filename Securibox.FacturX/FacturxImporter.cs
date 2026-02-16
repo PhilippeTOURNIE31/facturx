@@ -1,4 +1,8 @@
-﻿using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Microsoft.Extensions.Logging;
@@ -13,6 +17,9 @@ using Securibox.FacturX.Schematron.Helpers;
 using Securibox.FacturX.SpecificationModels;
 using XmpCore;
 using static PdfSharpCore.Pdf.PdfDictionary;
+#if NET462
+using Securibox.FacturX.Compatibility;
+#endif
 
 namespace Securibox.FacturX
 {
@@ -221,7 +228,11 @@ namespace Securibox.FacturX
                 byte[] metadataBytes = new byte[0];
                 if (dict?.Stream == null)
                 {
+#if NET462
+                    CompatibilityExtensions.ThrowIfNull(_pdfFileStream, nameof(_pdfFileStream));
+#else
                     ArgumentNullException.ThrowIfNull(_pdfFileStream);
+#endif
 
                     _pdfFileStream.Position = 0;
                     var pdfText = Encoding.UTF8.GetString(_pdfFileStream.ToArray());

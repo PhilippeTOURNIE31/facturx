@@ -19,7 +19,7 @@ namespace Securibox.FacturX {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -85,7 +85,8 @@ namespace Securibox.FacturX {
         ///    &lt;enumeration value=&quot;83&quot;/&gt;
         ///    &lt;enumeration value=&quot;84&quot;/&gt;
         ///    &lt;enumeration value=&quot;102&quot;/&gt;
-        ///    &lt;enumeration value=&quot;130&quot;/&gt; [rest of string was truncated]&quot;;.
+        ///    &lt;enumeration value=&quot;130&quot;/&gt;
+        ///    &lt;enumerat [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Factur_X_1_08_BASIC_codedb {
             get {
@@ -120,7 +121,8 @@ namespace Securibox.FacturX {
         ///    &lt;enumeration value=&quot;102&quot;/&gt;
         ///    &lt;enumeration value=&quot;130&quot;/&gt;
         ///    &lt;enumeration value=&quot;202&quot;/&gt;
-        ///    &lt;enumeration value=&quot;203&quot;/&gt; [rest of string was truncated]&quot;;.
+        ///    &lt;enumeration value=&quot;203&quot;/&gt;
+        ///    &lt;enumeratio [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Factur_X_1_08_BASICWL_codedb {
             get {
@@ -156,7 +158,8 @@ namespace Securibox.FacturX {
         ///    &lt;enumeration value=&quot;202&quot;/&gt;
         ///    &lt;enumeration value=&quot;203&quot;/&gt;
         ///    &lt;enumeration value=&quot;204&quot;/&gt;
-        ///    &lt;enumeration value=&quot;2 [rest of string was truncated]&quot;;.
+        ///    &lt;enumeration value=&quot;211&quot;/&gt;
+        ///    &lt;enumer [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Factur_X_1_08_EN16931_codedb {
             get {
@@ -189,7 +192,8 @@ namespace Securibox.FacturX {
         ///    &lt;enumeration value=&quot;83&quot;/&gt;
         ///    &lt;enumeration value=&quot;84&quot;/&gt;
         ///    &lt;enumeration value=&quot;102&quot;/&gt;
-        ///    &lt;enumeration value [rest of string was truncated]&quot;;.
+        ///    &lt;enumeration value=&quot;130&quot;/&gt;
+        ///    &lt; [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Factur_X_1_08_EXTENDED_codedb {
             get {
@@ -224,7 +228,8 @@ namespace Securibox.FacturX {
         ///    &lt;enumeration value=&quot;102&quot;/&gt;
         ///    &lt;enumeration value=&quot;130&quot;/&gt;
         ///    &lt;enumeration value=&quot;202&quot;/&gt;
-        ///    &lt;enumeration value=&quot;203&quot;/&gt; [rest of string was truncated]&quot;;.
+        ///    &lt;enumeration value=&quot;203&quot;/&gt;
+        ///    &lt;enumeratio [rest of string was truncated]&quot;;.
         /// </summary>
         public static string Factur_X_1_08_MINIMUM_codedb {
             get {
@@ -243,7 +248,7 @@ namespace Securibox.FacturX {
         ///    &lt;rdf:Description xmlns:dc=&quot;http://purl.org/dc/elements/1.1/&quot; rdf:about=&quot;&quot;&gt;
         ///      &lt;dc:title&gt;
         ///        &lt;rdf:Alt&gt;
-        ///          &lt;rdf:li xml:lang=&quot;x-default [rest of string was truncated]&quot;;.
+        ///          &lt;rdf:li xml:lang=&quot;x-default&quot;&gt;{{Docume [rest of string was truncated]&quot;;.
         /// </summary>
         public static string PdfMetadataTemplate {
             get {

@@ -9,6 +9,9 @@ using Securibox.FacturX.Models.Enums;
 using Securibox.FacturX.Models.Minimum;
 using Securibox.FacturX.Schematron.Helpers;
 using Securibox.FacturX.SpecificationModels;
+#if NET462
+using Securibox.FacturX.Compatibility;
+#endif
 
 namespace Securibox.FacturX
 {
@@ -111,7 +114,11 @@ namespace Securibox.FacturX
             bool failOnInvalid = false
         )
         {
+#if NET462
+            CompatibilityExtensions.ThrowIfNull(invoice, nameof(invoice));
+#else
             ArgumentNullException.ThrowIfNull(invoice);
+#endif
             if (!File.Exists(pdfPath))
             {
                 throw new FileNotFoundException("File not found", pdfPath);
@@ -183,8 +190,13 @@ namespace Securibox.FacturX
             bool failOnInvalid = false
         )
         {
+#if NET462
+            CompatibilityExtensions.ThrowIfNull(pdfStream, nameof(pdfStream));
+            CompatibilityExtensions.ThrowIfNull(xmlStream, nameof(xmlStream));
+#else
             ArgumentNullException.ThrowIfNull(pdfStream);
             ArgumentNullException.ThrowIfNull(xmlStream);
+#endif
 
             _logger.LogInformation(
                 $"Validating XML with XSD validation for conformance level {conformanceLevel.Name}"

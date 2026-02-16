@@ -1,4 +1,7 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -9,6 +12,9 @@ using System.Xml.Xsl;
 using Securibox.FacturX.Schematron.Xslt;
 using Securibox.FacturX.Utils;
 using Wmhelp.XPath2;
+#if NET462
+using Securibox.FacturX.Compatibility;
+#endif
 
 namespace Securibox.FacturX.Schematron.Types
 {
@@ -87,7 +93,11 @@ namespace Securibox.FacturX.Schematron.Types
             var result = fragment.DocumentElement?.InnerXml.Trim().Split('\n');
             if (result != null && result.Length > 0)
             {
+#if NET462
+                return CompatibilityExtensions.JoinChar('\n', result.Select(x => x.Trim()));
+#else
                 return String.Join('\n', result.Select(x => x.Trim()));
+#endif
             }
             else
             {
@@ -193,7 +203,7 @@ namespace Securibox.FacturX.Schematron.Types
             XsltContext context,
             XPathNavigator navigator,
             string expr,
-            Dictionary<string, Object>? variablesDictionary = null
+            Dictionary<string, Object> variablesDictionary = null
         )
         {
             #region Every condition
@@ -232,7 +242,11 @@ namespace Securibox.FacturX.Schematron.Types
                 }
 
                 string condition = everyMatch.Groups[2].ToString().Trim();
+#if NET462
+                if (condition.StartsWithChar('(') && condition.EndsWithChar(')'))
+#else
                 if (condition.StartsWith('(') && condition.EndsWith(')'))
+#endif
                     condition = condition.Substring(1, condition.Length - 2);
 
                 if (variablesDictionary is null)
@@ -280,7 +294,11 @@ namespace Securibox.FacturX.Schematron.Types
                 }
 
                 string condition = someMatch.Groups[2].ToString().Trim();
+#if NET462
+                if (condition.StartsWithChar('(') && condition.EndsWithChar(')'))
+#else
                 if (condition.StartsWith('(') && condition.EndsWith(')'))
+#endif
                     condition = condition.Substring(1, condition.Length - 2);
 
                 foreach (var value in varValues)
@@ -379,7 +397,7 @@ namespace Securibox.FacturX.Schematron.Types
             XPathNavigator navigator,
             string expr,
             Match forMatch,
-            Dictionary<string, Object>? variables = null
+            Dictionary<string, Object> variables = null
         )
         {
             var bindings = forMatch.Groups[1].Value.Trim();
@@ -388,7 +406,11 @@ namespace Securibox.FacturX.Schematron.Types
             var bindingParts = bindings
                 .Split(',')
                 .Select(b => b.Trim())
+#if NET462
+                .Where(b => b.StartsWithChar('$'))
+#else
                 .Where(b => b.StartsWith('$'))
+#endif
                 .ToArray();
 
             if (variables is null)
@@ -541,7 +563,11 @@ namespace Securibox.FacturX.Schematron.Types
         private static string TrimOuterParentheses(string expr)
         {
             expr = expr.Trim();
+#if NET462
+            while (expr.StartsWithChar('(') && expr.EndsWithChar(')'))
+#else
             while (expr.StartsWith('(') && expr.EndsWith(')'))
+#endif
             {
                 int depth = 0;
                 bool matched = false;
